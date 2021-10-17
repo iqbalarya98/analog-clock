@@ -1,0 +1,284 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  background: #171717;
+  justify-content: center;
+}
+
+body.light {
+  background: #fff;
+}
+
+.clock {
+  position: relative;
+  width: 350px;
+  height: 350px;
+  display: flex;
+  border-radius: 50%;
+  align-items: center;
+  background-size: cover;
+  justify-content: center;
+  border: 4px solid #091921;
+  background-image: url(clock.png);
+  /* background: rgba(255, 255, 255, 0.1); */
+  z-index: 1;
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(225, 225, 225, 0.25);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(25px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body.light .clock {
+  background-image: url(clock2.png);
+}
+
+.clock:before {
+  width: 15px;
+  content: '';
+  height: 15px;
+  z-index: 10000;
+  background: linear-gradient(to top, #008aff, #00ffe7);
+  animation: animate 5s linear infinite;
+  border-radius: 50%;
+  position: absolute;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(#FF0000, #2B00FF);
+  border-radius: 50%;
+  transform: translate(-20px, -20px);
+}
+
+body.light section::before {
+  background: linear-gradient(#00FF6A, #00CEFF);
+}
+
+section::after {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(#0080EE, #EE00A5);
+  border-radius: 50%;
+  transform: translate(220px, -55px);
+}
+
+body.light section::after {
+  background: linear-gradient(#3AEE00, #BCEE00);
+}
+
+
+@keyframes animate {
+
+  0%,
+  100% {
+    filter: hue-rotate(0deg);
+  }
+
+  50% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.clock .hour,
+.clock .min,
+.clock .sec {
+  position: absolute;
+}
+
+.clock .hour,
+.hr {
+  width: 160px;
+  height: 160px;
+}
+
+.clock .min,
+.mn {
+  width: 190px;
+  height: 190px;
+}
+
+.clock .sec,
+.sc {
+  width: 230px;
+  height: 230px;
+}
+
+.hr,
+.mn,
+.sc {
+  display: flex;
+  position: absolute;
+  border-radius: 50%;
+  /*align-items: center;*/
+  justify-content: center;
+}
+
+.hr:before {
+  width: 8px;
+  z-index: 10;
+  content: '';
+  height: 80px;
+  position: absolute;
+  background: linear-gradient(#E62C45, #632147);
+  border-radius: 6px 6px 0 0;
+}
+
+.mn:before {
+  width: 4px;
+  z-index: 11;
+  content: '';
+  height: 90px;
+  position: absolute;
+  background: linear-gradient(#DFC30B, #66DF0B);
+  border-radius: 6px 6px 0 0;
+}
+
+.sc:before {
+  width: 2px;
+  z-index: 12;
+  content: '';
+  height: 150px;
+  position: absolute;
+  background: linear-gradient(#2837D6, #1BDEBC);
+  border-radius: 6px 6px 0 0;
+}
+
+h1 {
+  position: relative;
+  font-size: 15px;
+  top: 70px;
+  color: #B8B8B8;
+  text-align: center;
+}
+
+body.light h1 {
+  color: #5C5C5C;
+}
+
+.toggle {
+  top: 8px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  border-radius: 50%;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  background-origin: border-box;
+  border: 2px solid transparent;
+  background-clip: content-box, border-box;
+  background-image: linear-gradient(#0D142E, #0D142E), radial-gradient(circle at top, #367BF0, #27AECB);
+}
+
+body.light .toggle {
+  border: 2px solid transparent;
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  background-image: linear-gradient(#fff, #fff), radial-gradient(circle at top, #367BF0, #27AECB);
+}
+
+.toggle::before {
+  content: '\f186';
+  color: #2fa1ff;
+  font-family: fontAwesome;
+}
+
+body.light .toggle::before {
+  content: '\f185';
+}
+
+#clock { 
+  position: relative;
+  display: flex;
+  top: -60px;
+  right: -55px;
+  color: #27AECB;
+  font-size: 20px;
+  font-family: arial;
+  font-weight: bold;
+  justify-content: space-evenly;
+  width: 2px; 
+  margin: 2px;
+  text-align: center; 
+}
+
+
+/* Responsive Breakpoint */
+
+/* Ukuran Tablet */
+@media screen and (max-width: 768px) {
+  nav ul {
+    width: 50%;
+  }
+}
+
+
+/* Ukuran Mobile */
+@media screen and (max-width: 576px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  nav ul {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(225, 225, 225, 0.25);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(25px);
+    transform: translateX(100%);
+    transition: all 0.9s;
+    opacity: 0;
+    border-radius: 2px;
+  }
+
+  nav ul.slide {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  section .card {
+    position: relative;
+    width: 250px;
+    top: 10px;
+    right: 4px;
+    height: 250px;
+  }
+
+  section::before {
+    width: 120px;
+    height: 120px;
+    transform: translate(-50px, -30px);
+  }
+
+  section::after {
+    width: 120px;
+    height: 120px;
+    transform: translate(270px, -90px);
+  }
+}
